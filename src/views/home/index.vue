@@ -6,7 +6,19 @@ import solution from "../../assets/solution.svg";
 import sertificate from "../../assets/sertificate.svg";
 import contact from "../../assets/contact.svg";
 import Footer from "../../components/Footer.vue";
+import { Ref, ref } from "vue";
+import { toast } from "vue-sonner";
+
+const inputPromo: Ref<string> = ref("");
+const submit = (): void => {
+ if(inputPromo.value.length < 4) {
+   toast.info("Minimal 4 karakter");
+ } else {
+   toast.error("Maaf, Gimmick feature");
+ }
+}
 </script>
+
 
 <template>
   <v-app>
@@ -85,13 +97,13 @@ import Footer from "../../components/Footer.vue";
           <h3>Dapatkan Promo Menarik</h3>
 
           <div class="input-group mt-3 mt-md-0">
-            <input
-              value="{inputPromo}"
+            <input 
+              v-model="inputPromo"
               type="text"
               class="form-control"
               placeholder="masukkan kode voucher"
             />
-            <button class="btn btn-dark btn-lg" type="submit">submit</button>
+            <button @click="submit" class="btn btn-dark btn-lg" type="submit">submit</button>
           </div>
         </div>
       </div>

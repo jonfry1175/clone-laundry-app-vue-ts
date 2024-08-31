@@ -1,8 +1,9 @@
 <script setup lang="ts">
-import HomePage from './views/home/index.vue';
+import { Toaster } from 'vue-sonner';
 </script>
 
 <template>
-  <HomePage/>
+  <Toaster closeButton richColors/>
+  <router-view></router-view>
 </template>
 
